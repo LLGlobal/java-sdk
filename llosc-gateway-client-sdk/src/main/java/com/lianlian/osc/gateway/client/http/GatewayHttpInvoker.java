@@ -80,8 +80,12 @@ public class GatewayHttpInvoker {
             String contentType = null;
             contentType = Files.probeContentType(path);
             FileBody fileBody = new FileBody(req.getAttachment(), ContentType.create(contentType), req.getAttachment().getName());
-            StringBody comment = new StringBody(JSONObject.toJSONString(req.getExtensionInfo()), ContentType.APPLICATION_JSON);
-            HttpEntity reqEntity = MultipartEntityBuilder.create().addPart("file", fileBody).addPart("extension_info", comment).build();
+            MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create().addPart("file", fileBody);
+            if (req.getExtensionInfo() != null) {
+                StringBody comment = new StringBody(JSONObject.toJSONString(req.getExtensionInfo()), ContentType.APPLICATION_JSON);
+                multipartEntityBuilder = multipartEntityBuilder.addPart("extension_info", comment);
+            }
+            HttpEntity reqEntity = multipartEntityBuilder.build();
             httpMenthod.setEntity(reqEntity);
             response = httpclient.execute(httpMenthod);
             //System.out.println(response.getStatusLine());
