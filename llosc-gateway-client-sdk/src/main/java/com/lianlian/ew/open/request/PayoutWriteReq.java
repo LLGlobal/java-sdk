@@ -63,8 +63,8 @@ public class PayoutWriteReq extends BaseOpenApiReq {
     /**
      * Unique identification of required materials
      */
-    @NotNull(message = "fileId is required.")
-    private String fileId;
+    @NotNull(message = "fileFolderId is required.")
+    private String fileFolderId;
 
     /**
      * This is the postscript information visible to the payee.
@@ -86,7 +86,7 @@ public class PayoutWriteReq extends BaseOpenApiReq {
                 ", payCurrency='" + payCurrency + '\'' +
                 ", sendCurrency='" + sendCurrency + '\'' +
                 ", sendAmount='" + sendAmount + '\'' +
-                ", fileId='" + fileId + '\'' +
+                ", fileFolderId='" + fileFolderId + '\'' +
                 ", reference='" + reference + '\'' +
                 ", additionalInfo=" + additionalInfo +
                 "} " + super.toString();
