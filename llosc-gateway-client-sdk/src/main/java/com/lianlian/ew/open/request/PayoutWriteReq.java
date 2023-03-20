@@ -63,7 +63,6 @@ public class PayoutWriteReq extends BaseOpenApiReq {
     /**
      * Unique identification of required materials
      */
-    @NotNull(message = "fileFolderId is required.")
     private String fileFolderId;
 
     /**
