@@ -21,5 +21,5 @@ public interface FileWriteService {
      * @return
      */
     @RequestConfig(uri = "/gateway/file/upload", type = ApiUriType.NORMAL, menthod = ApiMenthod.POST,reference = ApiTypeReference.AttachmentReadService_load)
-    RichOpenRes<FileDetail> upload(AttachmentUploadReq req);
+    FileDetail upload(AttachmentUploadReq req);
 }

@@ -24,7 +24,7 @@ public class FileUploadDemo implements Constants {
         try {
             FileWriteService service = GatewayProxyFactory.getInstance().create(FileWriteService.class, config);
             AttachmentUploadReq req = new AttachmentUploadReq(new File("D:/yyzz.png"), new AttachmentExtensionInfo("ymt__GJhbjqsGdntCvBwSohDVLIUXWmfOXvJDAUnFMMBhTiKhU_WAWnVABKsvpW`eSHL\\Qv\\ViMOqKxX[MWcsFiDb]WRhuWosOX]JRNFZ[Mj\\RVGo^c^DurlkICnVDgX", "testTitle_a"));
-            RichOpenRes<FileDetail> res = service.upload(req);
+            FileDetail res = service.upload(req);
             System.out.println(res);
             System.out.println(JSONObject.toJSON(res));
         } catch (Exception e) {
