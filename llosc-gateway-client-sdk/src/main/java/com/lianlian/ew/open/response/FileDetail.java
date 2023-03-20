@@ -27,7 +27,7 @@ public class FileDetail implements Serializable {
     /**
      * The attachment name in the server.
      */
-    private String name;
+    private String fileName;
 
 
     /**

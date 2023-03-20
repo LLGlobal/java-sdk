@@ -19,6 +19,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpPut;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.HttpMultipartMode;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
@@ -81,6 +82,7 @@ public class GatewayHttpInvoker {
             contentType = Files.probeContentType(path);
             FileBody fileBody = new FileBody(req.getAttachment(), ContentType.create(contentType), req.getAttachment().getName());
             MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create().addPart("file", fileBody);
+            multipartEntityBuilder.setMode(HttpMultipartMode.RFC6532);
             if (req.getExtensionInfo() != null) {
                 StringBody comment = new StringBody(JSONObject.toJSONString(req.getExtensionInfo()), ContentType.APPLICATION_JSON);
                 multipartEntityBuilder = multipartEntityBuilder.addPart("extension_info", comment);
