@@ -124,6 +124,14 @@ public class PayoutDetailRes implements Serializable {
     private String status;
 
     /**
+     * The payout refunded pre status
+     * Allowed values:
+     * PROCESSING
+     * COMPLETED
+     */
+    private String refundedPreStatus;
+
+    /**
      * Set of key-value pairs that you can attach the business information according to Lianlian's requirements
      */
     private List<AdditionalInfo> additionalInfo;
